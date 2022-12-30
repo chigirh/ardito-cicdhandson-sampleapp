@@ -1,0 +1,124 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '3.0.1'
+    id 'io.spring.dependency-management' version '1.1.0'
+}
+
+allprojects {
+    repositories {
+        mavenCentral()
+    }
+
+    bootJar {
+        enabled = false
+    }
+
+}
+
+subprojects {
+    group = 'com.ardito.cicd-handson'
+    version = '0.0.1-SNAPSHOT'
+
+    java {
+        toolchain {
+            languageVersion = JavaLanguageVersion.of(17)
+        }
+    }
+
+    apply plugin: 'java'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: "org.springframework.boot"
+
+    repositories {
+        mavenCentral()
+    }
+
+    configurations {
+        compileOnly {
+            extendsFrom annotationProcessor
+        }
+    }
+
+    dependencies {
+        developmentOnly 'org.springframework.boot:spring-boot-devtools'
+        implementation 'org.springframework.boot:spring-boot-starter-web'
+        compileOnly 'org.projectlombok:lombok'
+        annotationProcessor 'org.projectlombok:lombok'
+        testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    }
+
+    tasks.named('test') {
+        useJUnitPlatform()
+    }
+}
+
+project(":config") {
+    bootJar {
+        archiveFileName = 'ardito-cicdhandson-application.jar'
+        enabled = true
+    }
+
+    dependencies {
+        implementation project(':domain:enterprise')
+        implementation project(':domain:application')
+        implementation project(':web')
+        implementation project(':infra:memory')
+    }
+}
+
+project(":domain") {
+
+    bootJar {
+        enabled = false
+    }
+}
+
+project(":domain:enterprise") {
+
+    bootJar {
+        enabled = false
+    }
+}
+
+project(":domain:application") {
+
+    bootJar {
+        enabled = false
+    }
+
+    dependencies {
+        implementation project(':domain:enterprise')
+    }
+}
+
+project(":web") {
+
+    bootJar {
+        enabled = false
+    }
+
+    dependencies {
+        implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+        implementation project(':domain:enterprise')
+        implementation project(':domain:application')
+    }
+}
+
+project(":infra") {
+
+    bootJar {
+        enabled = false
+    }
+}
+
+project(":infra:memory") {
+
+    bootJar {
+        enabled = false
+    }
+
+    dependencies {
+        implementation project(':domain:enterprise')
+        implementation project(':domain:application')
+    }
+}
