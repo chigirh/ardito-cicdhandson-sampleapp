@@ -4,4 +4,4 @@ COPY config/build/libs/ardito-cicdhandson-application.jar /var/ardito-cicdhandso
 
 
 
-CMD ["java","-jar","ardito-cicdhandson-application.jar"]
+CMD ["java","-jar","/var/ardito-cicdhandson-application.jar"]
