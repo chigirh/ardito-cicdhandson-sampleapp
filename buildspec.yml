@@ -15,6 +15,7 @@ phases:
       # ECRログイン
       - echo Logging in to Amazon ECR...
       - echo $AWS_DEFAULT_REGION
+      - echo $ECR_URI
       - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $ECR_URI
 
   build:
