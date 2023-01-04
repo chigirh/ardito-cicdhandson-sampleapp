@@ -8,6 +8,6 @@ import org.springframework.stereotype.Repository;
 public class WebPageRepositoryImpl implements WebPageRepository {
     @Override
     public WebPageTitle fetchTitle() {
-        return new WebPageTitle("Ardito CICD Handson deploy 20230102");
+        return new WebPageTitle("Ardito CICD Handson deploy 20230104");
     }
 }
