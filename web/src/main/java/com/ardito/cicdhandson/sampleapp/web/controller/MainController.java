@@ -1,6 +1,6 @@
 package com.ardito.cicdhandson.sampleapp.web.controller;
 
-import com.ardito.cicdhandson.sampleapp.donain.application.port.webpage.WebPageFetchInput;
+import com.ardito.cicdhandson.sampleapp.donain.application.port.DefaultInput;
 import com.ardito.cicdhandson.sampleapp.donain.application.port.webpage.WebPageFetchPort;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
@@ -15,7 +15,7 @@ public class MainController {
 
     @GetMapping("/")
     public String hello(Model model) {
-        var output = webPageFetchPort.useCase(new WebPageFetchInput());
+        var output = webPageFetchPort.useCase(new DefaultInput());
         model.addAttribute("title", output.webPageTitle.raw());
         return "main/index";
     }

@@ -1,0 +1,16 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>application top</title>
+</head>
+<body>
+<h1>TodoList</h1>
+<p th:each="todo : ${todos}" th:text="${todo.title}"/>
+<hr>
+<form method="post" th:action="@{todo/add}">
+    <input type="text" name="title"/>
+    <input type="submit" value="追加"/>
+</form>
+</body>
+</html>
