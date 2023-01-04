@@ -1,6 +1,6 @@
 package com.ardito.cicdhandson.sampleapp.infra.repository;
 
-import com.ardito.cicdhandson.sampleapp.domain.enterprise.WebPageTitle;
+import com.ardito.cicdhandson.sampleapp.domain.enterprise.model.vo.WebPageTitle;
 import com.ardito.cicdhandson.sampleapp.donain.application.repository.WebPageRepository;
 import org.springframework.stereotype.Repository;
 
