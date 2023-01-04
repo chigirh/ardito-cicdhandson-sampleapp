@@ -20,7 +20,6 @@ phases:
     commands:
       - echo Build
       - chmod +x gradlew
-      - ./gradlew build --stacktrace
       - ./gradlew bootJar --stacktrace
       - echo Building the Docker image...
       - docker build -t $REPOSITORY_URI:latest .
